@@ -4,15 +4,37 @@ Trust-and-safety demo that scores inbound social profiles for authenticity. It i
 
 The training corpus is **ethically generated synthetic data**. It mimics Facebook, Instagram, and Twitter-style *public* statistics (graph size, completeness, activity cadence). It does not contain scraped accounts or real people.
 
-## Quick start (Windows)
+[![CI](https://github.com/Saisriya2003/fake-profile-detector/actions/workflows/ci.yml/badge.svg)](https://github.com/Saisriya2003/fake-profile-detector/actions/workflows/ci.yml)
 
-Needs Python 3.12 and Node 18+. No API keys.
+## Quick start
 
-```powershell
-.\start.ps1
+**Requirements:** [Python 3.11+](https://www.python.org/downloads/) and [Node.js 18+](https://nodejs.org/) on your PATH. No API keys, no database server. Trained model weights are included in the repo.
+
+```bash
+git clone https://github.com/Saisriya2003/fake-profile-detector.git
+cd fake-profile-detector
 ```
 
-Installs dependencies on first run, starts the API on `http://127.0.0.1:8001` and the UI on `http://localhost:5173`, and opens the browser. Manual steps are under **How to run** below.
+Then run the one-command starter for your OS. It installs dependencies on first run, starts the API on `http://127.0.0.1:8001` and the UI on `http://localhost:5173`, and opens the browser.
+
+| OS | Command |
+| --- | --- |
+| Windows (PowerShell) | `.\start.ps1` |
+| macOS / Linux | `chmod +x start.sh && ./start.sh` |
+
+If PowerShell refuses to run the script ("running scripts is disabled"), use:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\start.ps1
+```
+
+Manual steps are under **How to run** below. CI runs the same install, API smoke test, and production build on every push.
+
+### Troubleshooting
+
+- **`python` not found** — on macOS/Linux use `python3`; on Windows install from python.org and tick "Add to PATH".
+- **Port 8001 or 5173 already in use** — stop the other process, or change the port in `start.ps1` / `start.sh` and `frontend/vite.config.js` together.
+- **Blank page / "Signal service unreachable"** — the API is not up yet. Check `http://127.0.0.1:8001/api/health`.
 
 | | |
 | --- | --- |
