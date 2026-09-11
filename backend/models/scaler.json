@@ -1,0 +1,50 @@
+{
+  "features": [
+    "follower_count",
+    "following_count",
+    "friends_count",
+    "posts_count",
+    "account_age_days",
+    "has_profile_photo",
+    "has_cover_photo",
+    "bio_length",
+    "username_digit_ratio",
+    "username_length",
+    "friend_request_mutuals",
+    "profile_completeness",
+    "avg_likes_per_post",
+    "posts_per_week"
+  ],
+  "min": [
+    1.0,
+    30.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    0.0,
+    0.0884,
+    0.15,
+    0.004
+  ],
+  "max": [
+    20971.0,
+    9029.0,
+    2659.0,
+    3890.0,
+    5200.0,
+    1.0,
+    1.0,
+    229.0,
+    0.875,
+    24.0,
+    175.0,
+    1.0,
+    1377.7,
+    40.0
+  ]
+}
