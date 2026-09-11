@@ -4,6 +4,23 @@ Trust-and-safety demo that scores inbound social profiles for authenticity. It i
 
 The training corpus is **ethically generated synthetic data**. It mimics Facebook, Instagram, and Twitter-style *public* statistics (graph size, completeness, activity cadence). It does not contain scraped accounts or real people.
 
+## Quick start (Windows)
+
+Needs Python 3.12 and Node 18+. No API keys.
+
+```powershell
+.\start.ps1
+```
+
+Installs dependencies on first run, starts the API on `http://127.0.0.1:8001` and the UI on `http://localhost:5173`, and opens the browser. Manual steps are under **How to run** below.
+
+| | |
+| --- | --- |
+| Stack | Python, NumPy, FastAPI, React, Vite |
+| Model | From-scratch ANN, sigmoid activations, backpropagation |
+| Data | Synthetic multi-platform profiles (`backend/data/profiles.csv`) |
+| Screens | Inspect (score a profile), Gallery (sample profiles), Model lab (metrics) |
+
 ## Resume mapping
 
 | Claim | Where it lives |
