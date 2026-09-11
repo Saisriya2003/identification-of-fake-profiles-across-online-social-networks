@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# SignalGuard - one-command start for macOS / Linux.
+# Identification of Fake Profiles Across Online Social Networks - one-command start for macOS / Linux.
 # Installs dependencies on first run, then runs the API (8001) and UI (5173).
 # Press Ctrl+C to stop both.
 set -euo pipefail
@@ -30,5 +30,5 @@ sleep 4
 URL="http://localhost:5173"
 if command -v xdg-open >/dev/null; then xdg-open "$URL" >/dev/null 2>&1 || true
 elif command -v open >/dev/null; then open "$URL" || true; fi
-echo "SignalGuard: API http://127.0.0.1:8001  UI $URL"
+echo "Identification of Fake Profiles Across Online Social Networks: API http://127.0.0.1:8001  UI $URL"
 wait

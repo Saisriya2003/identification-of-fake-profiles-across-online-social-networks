@@ -1,10 +1,10 @@
-# SignalGuard
+# Identification of Fake Profiles Across Online Social Networks
 
 Trust-and-safety demo that scores inbound social profiles for authenticity. It implements the portfolio claim **Identification of Fake Profiles Across Online Social Networks**: a from-scratch artificial neural network (sigmoid activations, binary cross-entropy, backpropagation) trained on multi-platform public-profile signals.
 
 The training corpus is **ethically generated synthetic data**. It mimics Facebook, Instagram, and Twitter-style *public* statistics (graph size, completeness, activity cadence). It does not contain scraped accounts or real people.
 
-[![CI](https://github.com/Saisriya2003/fake-profile-detector/actions/workflows/ci.yml/badge.svg)](https://github.com/Saisriya2003/fake-profile-detector/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-c9844a.svg)](LICENSE) [![Tests: pytest](https://img.shields.io/badge/tests-pytest%20%C2%B7%2019-7eb8a2.svg)](backend/tests) [![Docker Compose](https://img.shields.io/badge/docker-compose-0c0a08.svg)](docker-compose.yml)
+[![CI](https://github.com/Saisriya2003/identification-of-fake-profiles-across-online-social-networks/actions/workflows/ci.yml/badge.svg)](https://github.com/Saisriya2003/identification-of-fake-profiles-across-online-social-networks/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-c9844a.svg)](LICENSE) [![Tests: pytest](https://img.shields.io/badge/tests-pytest%20%C2%B7%2019-7eb8a2.svg)](backend/tests) [![Docker Compose](https://img.shields.io/badge/docker-compose-0c0a08.svg)](docker-compose.yml)
 
 Full documentation — architecture, the neural network in depth, data, training results, API, UI workflow, configuration, CI: **[DOCUMENTATION.md](DOCUMENTATION.md)**.
 
@@ -19,8 +19,8 @@ Full documentation — architecture, the neural network in depth, data, training
 **Requirements:** [Python 3.11+](https://www.python.org/downloads/) and [Node.js 18+](https://nodejs.org/) on your PATH. No API keys, no database server. Trained model weights are included in the repo. Prefer containers? See [Run with Docker](#run-with-docker).
 
 ```bash
-git clone https://github.com/Saisriya2003/fake-profile-detector.git
-cd fake-profile-detector
+git clone https://github.com/Saisriya2003/identification-of-fake-profiles-across-online-social-networks.git
+cd identification-of-fake-profiles-across-online-social-networks
 ```
 
 Then run the one-command starter for your OS. It installs dependencies on first run, starts the API on `http://127.0.0.1:8001` and the UI on `http://localhost:5173`, and opens the browser.
@@ -78,7 +78,7 @@ Feature contribution in the API is an **input × first-layer weight** heuristic:
 
 ## How to run (Windows PowerShell)
 
-From the repo root `fake-profile-detector`.
+From the repo root `identification-of-fake-profiles-across-online-social-networks`.
 
 ### Backend
 

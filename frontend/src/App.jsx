@@ -24,8 +24,8 @@ export default function App() {
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <h1>SignalGuard</h1>
-          <p>Fake profile identification across online social networks</p>
+          <h1>Identification of Fake Profiles Across Online Social Networks</h1>
+          <p>Artificial neural network scoring of friend-request authenticity</p>
         </div>
         <nav className="nav" aria-label="Primary">
           {VIEWS.map(([id, label]) => (
@@ -46,7 +46,7 @@ export default function App() {
       {view === "lab" && <ModelLab />}
 
       <footer className="foot">
-        SignalGuard scores synthetic public-profile statistics. No personal data
+        This demo scores synthetic public-profile statistics. No personal data
         was scraped. Demo runs without API keys.
       </footer>
     </div>

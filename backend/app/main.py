@@ -1,4 +1,4 @@
-"""SignalGuard API — score inbound social profiles for authenticity."""
+"""Identification of Fake Profiles Across Online Social Networks — API that scores inbound social profiles for authenticity."""
 
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ METRICS_PATH = BACKEND_ROOT / "models" / "metrics.json"
 SCALER_PATH = BACKEND_ROOT / "models" / "scaler.json"
 
 app = FastAPI(
-    title="SignalGuard",
+    title="Identification of Fake Profiles Across Online Social Networks",
     description="Fake profile identification across online social networks.",
     version="1.0.0",
 )
@@ -152,7 +152,7 @@ def health() -> dict[str, Any]:
     ready = WEIGHTS_PATH.exists() and SCALER_PATH.exists()
     return {
         "status": "ok" if ready else "degraded",
-        "service": "signalguard",
+        "service": "fake-profile-identification",
         "model_ready": ready,
     }
 

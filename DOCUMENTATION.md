@@ -1,8 +1,8 @@
-# SignalGuard — Complete Documentation
+# Identification of Fake Profiles Across Online Social Networks — Complete Documentation
 
 **Fake profile identification across online social networks**
 
-Repository: https://github.com/Saisriya2003/fake-profile-detector
+Repository: https://github.com/Saisriya2003/identification-of-fake-profiles-across-online-social-networks
 Author: Pettem Sai Sriya · saisriyavarma@gmail.com
 
 Resume project: *Identification of Fake Profiles Across Online Social Networks — Built a deep learning model using artificial neural networks to assess the authenticity of friend requests. Trained on data from Facebook and other platforms, applying sigmoid activation and backpropagation to refine weights and biases.*
@@ -32,7 +32,7 @@ Resume project: *Identification of Fake Profiles Across Online Social Networks �
 
 ## 1. Overview
 
-SignalGuard is a trust-and-safety tool. Given the public signals of a social-network profile that sent a friend request (followers, following, account age, photo presence, bio length, username shape, mutual connections, posting cadence), it returns an **authenticity score**, a **verdict**, and an **explanation** of which signals pushed the decision.
+The application is a trust-and-safety tool. Given the public signals of a social-network profile that sent a friend request (followers, following, account age, photo presence, bio length, username shape, mutual connections, posting cadence), it returns an **authenticity score**, a **verdict**, and an **explanation** of which signals pushed the decision.
 
 The model is a **from-scratch artificial neural network written in NumPy**. There is no scikit-learn estimator, no PyTorch, no autograd. Sigmoid activations, binary cross-entropy loss, and mini-batch backpropagation are implemented explicitly in `backend/app/ann.py`, so every claim in the resume line is visible in code.
 
@@ -65,7 +65,7 @@ Key properties:
 ## 3. Repository layout
 
 ```
-fake-profile-detector/
+identification-of-fake-profiles-across-online-social-networks/
 ├── backend/
 │   ├── app/
 │   │   ├── __init__.py
@@ -253,7 +253,7 @@ Base URL (dev): `http://127.0.0.1:8001`. All responses JSON.
 
 | Method | Path | Query / body | Response |
 | --- | --- | --- | --- |
-| GET | `/api/health` | — | `{status: "ok"|"degraded", service: "signalguard", model_ready}` |
+| GET | `/api/health` | — | `{status: "ok"|"degraded", service: "fake-profile-identification", model_ready}` |
 | GET | `/api/metrics` | — | Contents of `metrics.json` plus `feature_labels` |
 | GET | `/api/platforms` | — | `{by_platform: {facebook, instagram, twitter}, by_label: {real, fake}, total}` |
 | GET | `/api/samples` | `label=fake|real` (optional), `limit=1..24` (default 8) | `{samples: [{username, platform, label, …14 features}], label}` — random draw |
@@ -322,16 +322,16 @@ Verified at 1360 px and 390 px. Controls stack vertically on narrow screens; gau
 
 ```powershell
 # Windows PowerShell
-git clone https://github.com/Saisriya2003/fake-profile-detector.git
-cd fake-profile-detector
+git clone https://github.com/Saisriya2003/identification-of-fake-profiles-across-online-social-networks.git
+cd identification-of-fake-profiles-across-online-social-networks
 .\start.ps1
 # if scripts are blocked: powershell -ExecutionPolicy Bypass -File .\start.ps1
 ```
 
 ```bash
 # macOS / Linux
-git clone https://github.com/Saisriya2003/fake-profile-detector.git
-cd fake-profile-detector
+git clone https://github.com/Saisriya2003/identification-of-fake-profiles-across-online-social-networks.git
+cd identification-of-fake-profiles-across-online-social-networks
 ./start.sh
 ```
 

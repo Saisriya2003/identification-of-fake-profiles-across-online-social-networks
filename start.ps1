@@ -1,4 +1,4 @@
-# SignalGuard - one-command start for Windows PowerShell.
+# Identification of Fake Profiles Across Online Social Networks - one-command start for Windows PowerShell.
 # Installs dependencies on first run, then opens the API (8001) and UI (5173) in two windows.
 
 $root = $PSScriptRoot
@@ -24,4 +24,4 @@ Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$fr
 
 Start-Sleep -Seconds 4
 Start-Process "http://localhost:5173"
-Write-Host "SignalGuard: API http://127.0.0.1:8001  UI http://localhost:5173"
+Write-Host "Identification of Fake Profiles Across Online Social Networks: API http://127.0.0.1:8001  UI http://localhost:5173"

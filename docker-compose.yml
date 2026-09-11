@@ -1,7 +1,9 @@
-# SignalGuard in two containers: FastAPI + NumPy ANN, and nginx serving the React UI.
+# Identification of Fake Profiles Across Online Social Networks in two containers: FastAPI + NumPy ANN, and nginx serving the React UI.
 #   docker compose up --build
 #   UI  http://localhost:5173      API http://localhost:8001/api/health
 # Change host ports with WEB_PORT / API_PORT, e.g. WEB_PORT=8080 docker compose up
+name: identification-of-fake-profiles-across-online-social-networks
+
 services:
   api:
     build: ./backend

@@ -48,7 +48,7 @@ def client() -> TestClient:
 def test_health_reports_model_ready(client: TestClient) -> None:
     body = client.get("/api/health").json()
     assert body["status"] == "ok"
-    assert body["service"] == "signalguard"
+    assert body["service"] == "fake-profile-identification"
     assert body["model_ready"] is True
 
 
