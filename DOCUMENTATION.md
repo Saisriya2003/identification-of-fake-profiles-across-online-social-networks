@@ -353,6 +353,10 @@ npm install
 npm run dev          # http://localhost:5173
 ```
 
+### Docker
+
+`docker compose up --build` starts two containers: `api` (`backend/Dockerfile`, `python:3.12-slim`, weights and corpus baked in, healthcheck on `/api/health`) and `web` (`frontend/Dockerfile`, multi-stage Node build → `nginx:alpine` with `frontend/nginx.conf` proxying `/api/` to `api:8001` and falling back to `index.html`). Host ports default to 5173/8001 and are overridable with `WEB_PORT`/`API_PORT`.
+
 ### Production build
 
 `cd frontend && npm run build` → `frontend/dist/`. Serve statically with `/api` proxied to the FastAPI process, or build with `VITE_API_URL=https://your-api` to call it directly (then add that origin to CORS in `main.py`).
@@ -368,11 +372,19 @@ The backend has no environment variables; all paths are relative to `backend/`.
 
 ## 13. Testing, CI, and verification
 
+### Automated tests (`backend/tests`, pytest)
+
+19 tests, run with `pip install -r requirements-dev.txt && python -m pytest` from `backend/`:
+
+- `test_ann.py` — sigmoid bounds; forward shapes; a **finite-difference gradient check** on every weight and bias of a `[3,4,1]` network proving `_backward` matches numerical gradients to 1e-4; training reduces loss by > 50% and reaches > 90% accuracy on separable data; save/load round-trip reproduces predictions; contribution shapes; degenerate architecture rejected.
+- `test_features.py` — stable 14-feature schema; digit ratio; completeness bounded and monotone; min-max scaling clips and survives zero-span features; mapping order and defaults.
+- `test_api.py` — every endpoint against the committed artifacts: health, metrics contents, authentic and suspicious predictions (labels, verdicts, `p_fake = 1 − score`, six explanations), derived username stats, sample filters and validation (422), platform totals.
+
 ### GitHub Actions (`.github/workflows/ci.yml`)
 
 Runs on every push and pull request to `main`, on Ubuntu:
 
-- **backend** job: Python 3.12 → `pip install -r requirements.txt` → import `app.main` and load the weights → start Uvicorn on 8001 → `curl /api/health`, `/api/metrics`, `POST /api/predict` → assert 200.
+- **backend** job: Python 3.12 → `pip install -r requirements-dev.txt` → `pytest` → import `app.main` and load the weights → start Uvicorn on 8001 → `curl /api/health`, `/api/metrics`, `POST /api/predict` → assert 200.
 - **frontend** job: Node 20 → `npm ci` → `npm run build`.
 
 Status badge in `README.md`; last run green.

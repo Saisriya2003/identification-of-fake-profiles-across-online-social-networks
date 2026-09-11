@@ -4,13 +4,19 @@ Trust-and-safety demo that scores inbound social profiles for authenticity. It i
 
 The training corpus is **ethically generated synthetic data**. It mimics Facebook, Instagram, and Twitter-style *public* statistics (graph size, completeness, activity cadence). It does not contain scraped accounts or real people.
 
-[![CI](https://github.com/Saisriya2003/fake-profile-detector/actions/workflows/ci.yml/badge.svg)](https://github.com/Saisriya2003/fake-profile-detector/actions/workflows/ci.yml)
+[![CI](https://github.com/Saisriya2003/fake-profile-detector/actions/workflows/ci.yml/badge.svg)](https://github.com/Saisriya2003/fake-profile-detector/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-c9844a.svg)](LICENSE) [![Tests: pytest](https://img.shields.io/badge/tests-pytest%20%C2%B7%2019-7eb8a2.svg)](backend/tests) [![Docker Compose](https://img.shields.io/badge/docker-compose-0c0a08.svg)](docker-compose.yml)
 
 Full documentation — architecture, the neural network in depth, data, training results, API, UI workflow, configuration, CI: **[DOCUMENTATION.md](DOCUMENTATION.md)**.
 
+## Screenshots
+
+| Inspect — live scoring with explanation | Model lab — architecture, metrics, loss curve |
+| --- | --- |
+| ![Inspect view: sliders on the left, authenticity gauge and explanation chips on the right](docs/screenshots/inspect.png) | ![Model lab: layer diagram, accuracy/precision/recall/F1, confusion matrix, BCE loss sparkline](docs/screenshots/model-lab.png) |
+
 ## Quick start
 
-**Requirements:** [Python 3.11+](https://www.python.org/downloads/) and [Node.js 18+](https://nodejs.org/) on your PATH. No API keys, no database server. Trained model weights are included in the repo.
+**Requirements:** [Python 3.11+](https://www.python.org/downloads/) and [Node.js 18+](https://nodejs.org/) on your PATH. No API keys, no database server. Trained model weights are included in the repo. Prefer containers? See [Run with Docker](#run-with-docker).
 
 ```bash
 git clone https://github.com/Saisriya2003/fake-profile-detector.git
@@ -132,3 +138,30 @@ npm run build
 ## Data note
 
 `backend/data/profiles.csv` is synthetic (~4000 rows). Fake rows are statistically newer, thinner, more follow-heavy, more digit-laden in the handle, and colder on mutuals — the same public cues a reviewer uses on a friend request. Do not treat scores as a real-world moderation decision.
+
+## Run with Docker
+
+Two containers: the FastAPI service (with the trained weights baked in) and nginx serving the built React UI, proxying `/api` to the API.
+
+```bash
+docker compose up --build
+# UI  http://localhost:5173        API  http://localhost:8001/api/health
+```
+
+Change host ports with `WEB_PORT` / `API_PORT` (for example `WEB_PORT=8080 docker compose up`). Stop with `docker compose down`.
+
+## Tests
+
+`backend/tests` — 19 pytest tests: a finite-difference **gradient check** that proves the hand-written backpropagation matches numerical gradients, training convergence on separable data, save/load round-trip, feature scaling and completeness, and every API endpoint against the committed artifacts.
+
+```bash
+cd backend
+pip install -r requirements-dev.txt
+python -m pytest
+```
+
+CI runs the suite on every push, then boots the API and builds the UI.
+
+## License
+
+MIT — see [LICENSE](LICENSE). The corpus is synthetic; no real accounts or personal data are included.
