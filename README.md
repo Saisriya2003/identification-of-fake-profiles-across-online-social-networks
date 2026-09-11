@@ -6,6 +6,8 @@ The training corpus is **ethically generated synthetic data**. It mimics Faceboo
 
 [![CI](https://github.com/Saisriya2003/fake-profile-detector/actions/workflows/ci.yml/badge.svg)](https://github.com/Saisriya2003/fake-profile-detector/actions/workflows/ci.yml)
 
+Full documentation — architecture, the neural network in depth, data, training results, API, UI workflow, configuration, CI: **[DOCUMENTATION.md](DOCUMENTATION.md)**.
+
 ## Quick start
 
 **Requirements:** [Python 3.11+](https://www.python.org/downloads/) and [Node.js 18+](https://nodejs.org/) on your PATH. No API keys, no database server. Trained model weights are included in the repo.
